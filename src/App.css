@@ -1,6 +1,6 @@
 textarea{
   resize: none;
 }
-.form-control{
+textarea.form-control{
   border-width: 5px;
 }
