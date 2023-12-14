@@ -1,9 +1,12 @@
 import React from "react";
-import PropTypes from 'prop-types'
+import PropTypes from "prop-types";
 
 export default function Navbar(props) {
+  let border={
+    borderBottom:"1px solid black",
+  }
   return (
-    <nav className="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+    <nav className={props.myTheme.nav_bg} style={border} data-bs-theme={props.myTheme.nav_style}>
       <div className="container-fluid">
         <a className="navbar-brand" href="/">
           {props.title}
@@ -34,28 +37,29 @@ export default function Navbar(props) {
             <li className="nav-item dropdown"></li>
             <li className="nav-item"></li>
           </ul>
-          <form className="d-flex" role="search">
+          <div className="form-check form-switch">
             <input
-              className="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
+              className="form-check-input"
+              type="checkbox"
+              role="switch"
+              id="theme"
+              onChange={props.toggleStyle}
             />
-            <button className="btn btn-outline-success" type="submit">
-              Search
-            </button>
-          </form>
+            <label htmlFor="theme" style={props.myTheme}>
+              {props.myTheme.btnText}
+            </label>
+          </div>
         </div>
       </div>
     </nav>
   );
 }
 Navbar.prototype = {
-    title: PropTypes.string.isRequired,
-    aboutText: PropTypes.string.isRequired,    
+  title: PropTypes.string.isRequired,
+  aboutText: PropTypes.string.isRequired,
 };
 
 Navbar.defaultProps = {
-    title: 'Set title here',
-    aboutText: 'Set aboutText here',
+  title: "Set title here",
+  aboutText: "Set aboutText here",
 };

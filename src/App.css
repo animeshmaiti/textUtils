@@ -4,3 +4,6 @@ textarea{
 textarea.form-control{
   border-width: 5px;
 }
+.form-check-label{
+  color: aliceblue;
+}
