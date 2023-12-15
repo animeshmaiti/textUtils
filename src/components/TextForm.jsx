@@ -1,13 +1,17 @@
 import React, { useState } from "react";
 
 export default function TextForm(props) {
-  const [text, inputText] = useState({
+  let margin={
+    marginBottom: '0px',
+    paddingBottom: '16px',
+  }
+  const [text, setText] = useState({
     inText: "Write text",
-    outText: " ",
+    outText: "Write text",
   });
   const handleOnChange = (event) => {
     console.log("typing...");
-    inputText({ ...text, inText: event.target.value, outText: "" });
+    setText({ ...text, inText: event.target.value, outText: "" });
   };
   const readTime = (count) => {
     let time = count * 0.25;
@@ -31,14 +35,14 @@ export default function TextForm(props) {
   const handleUpClick = () => {
     console.log("clicked upper case");
     let newText = text.inText.toUpperCase();
-    inputText({ ...text, outText: newText });
+    setText({ ...text, outText: newText });
   };
   const handleLoClick = () => {
     let newText = text.inText.toLocaleLowerCase();
-    inputText({ ...text, outText: newText });
+    setText({ ...text, outText: newText });
   };
   const handleClearText = () => {
-    inputText({ ...text, inText: "", outText: "" });
+    setText({ ...text, inText: "", outText: "" });
     console.log("text cleared");
   };
   const handleExtractEmail = () => {
@@ -47,11 +51,18 @@ export default function TextForm(props) {
     if (matches) {
       const emails = matches.join(",\n");
       console.log("email extracted");
-      inputText({ ...text, outText: emails });
+      setText({ ...text, outText: emails });
     } else {
-      inputText({ ...text, outText: "Email not found" });
+      setText({ ...text, outText: "Email not found" });
     }
   };
+  const handleCopyText=()=>{
+    navigator.clipboard.writeText(text.outText);
+  }
+  const handleExtraSpace=()=>{
+    let newText=text.inText.split(/[ ]+/);
+    setText({...text,inText:newText.join(" "),outText:newText.join(" ")});
+  }
   return (
     <>
       <div style={props.myTheme}>
@@ -76,6 +87,12 @@ export default function TextForm(props) {
           <button className="btn btn-primary mx-2" onClick={handleExtractEmail}>
             Extract Email
           </button>
+          <button className="btn btn-primary mx-2" onClick={handleCopyText}>
+            Copy Output
+          </button>
+          <button className="btn btn-primary mx-2" onClick={handleExtraSpace}>
+            Remove Extra Spaces
+          </button>
           <button className="btn btn-primary mx-2" onClick={handleClearText}>
             Clear
           </button>
@@ -89,7 +106,7 @@ export default function TextForm(props) {
           <p>
             {wordCount()} Words and {text.length} characters
           </p>
-          <p>
+          <p style={margin}>
             Approximate reading time {readTime(text.inText.split(" ").length)}{" "}
           </p>
         </div>

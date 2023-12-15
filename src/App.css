@@ -7,3 +7,6 @@ textarea.form-control{
 .form-check-label{
   color: aliceblue;
 }
+.alert{
+  margin-bottom: 0;
+}
