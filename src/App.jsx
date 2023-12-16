@@ -1,8 +1,10 @@
 import "./App.css";
+import About from "./components/About";
 import Alert from "./components/Alert";
 import Navbar from "./components/Navbar";
 import TextForm from "./components/TextForm";
-import { useState } from "react";
+import { useState ,useEffect} from "react";
+import { BrowserRouter as Router, Routes,Route } from "react-router-dom";
 
 function App() {
   const [myStyle, setMyStyle] = useState({
@@ -12,6 +14,11 @@ function App() {
     nav_bg: "navbar navbar-expand-lg bg-dark",
     nav_style: "dark",
   });
+  useEffect(() => {
+    document.body.style.backgroundColor = myStyle.color === 'white' ? '#212529' : 'white';
+    document.body.style.color = myStyle.color === 'white' ? 'white' : '#212529';
+    // Add more styles as needed
+  }, [myStyle.color]);
   const [alert, setAlert] = useState(null);
   const showAlert = (type, massage) => {
     setAlert({
@@ -20,7 +27,7 @@ function App() {
     });
     setTimeout(() => {
       setAlert(null);
-    }, 1500);
+    }, 1000);
   };
   const toggleStyle = () => {
     if (myStyle.color === "white") {
@@ -31,7 +38,7 @@ function App() {
         nav_bg: "navbar navbar-expand-lg",
         nav_style: "light",
       });
-      showAlert("success","Light mode is enabled");
+      showAlert("success", "Light mode is enabled");
     } else {
       setMyStyle({
         color: "white",
@@ -40,19 +47,24 @@ function App() {
         nav_bg: "navbar navbar-expand-lg bg-dark",
         nav_style: "dark",
       });
-      showAlert("success","Dark mode is enabled");
+      showAlert("success", "Dark mode is enabled");
     }
   };
   return (
     <>
-      <Navbar
-        title="TextUtils"
-        aboutText="About TextUtils"
-        myTheme={myStyle}
-        toggleStyle={toggleStyle}
-      />
-      <Alert alert={alert}/>
-      <TextForm heading="Enter your text here" myTheme={myStyle} />
+      <Router>
+        <Navbar
+          title="TextUtils"
+          aboutText="About TextUtils"
+          myTheme={myStyle}
+          toggleStyle={toggleStyle}
+        />
+        <Alert alert={alert} />
+        <Routes>
+          <Route path="/" element={<TextForm heading="Enter your text here" myTheme={myStyle} />}/>
+          <Route path="/about" element={<About myTheme={myStyle}/>}/>
+        </Routes>
+      </Router>
     </>
   );
 }

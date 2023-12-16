@@ -1,10 +1,6 @@
 import React, { useState } from "react";
 
 export default function TextForm(props) {
-  let margin={
-    marginBottom: '0px',
-    paddingBottom: '16px',
-  }
   const [text, setText] = useState({
     inText: "Write text",
     outText: "Write text",
@@ -106,7 +102,7 @@ export default function TextForm(props) {
           <p>
             {wordCount()} Words and {text.length} characters
           </p>
-          <p style={margin}>
+          <p>
             Approximate reading time {readTime(text.inText.split(" ").length)}{" "}
           </p>
         </div>
