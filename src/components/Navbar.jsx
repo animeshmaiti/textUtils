@@ -5,15 +5,6 @@ export default function Navbar(props) {
   let border={
     borderBottom:"1px solid black",
   }
-  // const activeStyleLight = {
-  //   color: 'blue', // Set your desired styles for the light theme
-  //   fontWeight: 'bold',
-  // };
-
-  // const activeStyleDark = {
-  //   color: 'yellow', // Set your desired styles for the dark theme
-  //   fontWeight: 'bold',
-  // };
   return (
     <nav className={props.myTheme.nav_bg} style={border} data-bs-theme={props.myTheme.nav_style}>
       <div className="container-fluid">
@@ -43,8 +34,11 @@ export default function Navbar(props) {
                 {props.aboutText}
               </NavLink>
             </li>
-            <li className="nav-item dropdown"></li>
-            <li className="nav-item"></li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/contact">
+                Contact
+              </NavLink>
+            </li>
           </ul>
           <div className="form-check form-switch">
             <input

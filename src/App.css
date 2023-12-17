@@ -1,12 +1,15 @@
-textarea{
+textarea {
   resize: none;
 }
-textarea.form-control{
+
+textarea.form-control {
   border-width: 5px;
 }
-.form-check-label{
+
+.form-check-label {
   color: aliceblue;
 }
-.alert{
+
+.alert {
   margin-bottom: 0;
 }
