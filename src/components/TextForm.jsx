@@ -21,10 +21,11 @@ export default function TextForm(props) {
   };
 
   const wordCount = () => {
-    if (text.inText.length === 0) {
+    if (text.inText.trim().length === 0) {
       return 0;
     } else {
-      return text.inText.split(" ").length;
+      // Remove leading and trailing spaces and then split by spaces
+      return text.inText.trim().split(/\s+/).length;
     }
   };
 
