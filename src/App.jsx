@@ -16,10 +16,10 @@ function App() {
     nav_style: "dark",
   });
   useEffect(() => {
-    const svgElements = document.querySelectorAll('svg'); // Select all SVG elements
     document.body.style.backgroundColor = myStyle.color === 'white' ? '#212529' : 'white';
     document.body.style.color = myStyle.color === 'white' ? 'white' : '#212529';
     const setDefaultSvgColor = () => {
+      const svgElements = document.querySelectorAll('svg'); // Select all SVG elements
       const defaultColor = 'rgba(222, 226, 230, 0.75)'; // Set your default color
       svgElements.forEach((svg) => {
         if (myStyle.color==="white") {
@@ -69,7 +69,7 @@ function App() {
       });
     }
   };
-  
+
   return (
     <>
       <Router>
