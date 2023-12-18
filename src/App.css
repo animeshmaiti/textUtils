@@ -13,3 +13,10 @@ textarea.form-control {
 .alert {
   margin-bottom: 0;
 }
+.not-found{
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

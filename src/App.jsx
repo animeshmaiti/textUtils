@@ -3,6 +3,7 @@ import About from "./components/About";
 import Alert from "./components/Alert";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
+import NotFound from "./components/NotFound";
 import TextForm from "./components/TextForm";
 import { useState ,useEffect} from "react";
 import { BrowserRouter as Router, Routes,Route } from "react-router-dom";
@@ -83,6 +84,7 @@ function App() {
         <Routes>
           <Route exact path="/" element={<TextForm heading="Enter your text here" myTheme={myStyle} />}/>
           <Route exact path="/about" element={<About myTheme={myStyle}/>}/>
+          <Route path="*" element={<NotFound/>}/>
         </Routes>
         <Footer myTheme={myStyle}/>
       </Router>
