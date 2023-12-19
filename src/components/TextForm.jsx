@@ -75,22 +75,22 @@ export default function TextForm(props) {
               onChange={handleOnChange}
             ></textarea>
           </div>
-          <button className="btn btn-primary mx-2" onClick={handleUpClick}>
+          <button disabled={text.inText.length===0} className="btn btn-primary m-2" onClick={handleUpClick}>
             Convert To Uppercase
           </button>
-          <button className="btn btn-primary mx-2" onClick={handleLoClick}>
+          <button disabled={text.inText.length===0} className="btn btn-primary m-2" onClick={handleLoClick}>
             Convert To LowerCase
           </button>
-          <button className="btn btn-primary mx-2" onClick={handleExtractEmail}>
+          <button disabled={text.inText.length===0} className="btn btn-primary m-2" onClick={handleExtractEmail}>
             Extract Email
           </button>
-          <button className="btn btn-primary mx-2" onClick={handleCopyText}>
+          <button disabled={text.inText.length===0} className="btn btn-primary m-2" onClick={handleCopyText}>
             Copy Output
           </button>
-          <button className="btn btn-primary mx-2" onClick={handleExtraSpace}>
+          <button disabled={text.inText.length===0} className="btn btn-primary m-2" onClick={handleExtraSpace}>
             Remove Extra Spaces
           </button>
-          <button className="btn btn-primary mx-2" onClick={handleClearText}>
+          <button disabled={text.inText.length===0} className="btn btn-primary m-2" onClick={handleClearText}>
             Clear
           </button>
         </div>
@@ -101,10 +101,10 @@ export default function TextForm(props) {
           <p>{text.outText}</p>
           <h3>Text Summary</h3>
           <p>
-            {wordCount()} Words and {text.length} characters
+            {wordCount()} Words and {text.inText.length} characters
           </p>
           <p>
-            Approximate reading time {readTime(text.inText.split(" ").length)}{" "}
+            Approximate reading time {readTime(wordCount())}
           </p>
         </div>
       </div>
