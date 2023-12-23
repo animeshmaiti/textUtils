@@ -39,28 +39,28 @@ export default function Footer(props) {
           <ul className="nav col-md-4 justify-content-end list-unstyled d-flex">
             <li className="ms-3">
               <a className="text-body-secondary" href="https://github.com/animeshmaiti/textUtils" target="_blank" rel="noopener noreferrer">
-                <svg className="bi" width="24" height="24">
+                <svg className="bi" width="24" height="24" fill={props.myTheme.svg_style}>
                   <use xlinkHref="#gitHub"/>
                 </svg>
               </a>
             </li>
             <li className="ms-3">
               <a className="text-body-secondary" href="https://twitter.com/AnimeshMaiti7" target="_blank" rel="noopener noreferrer">
-                <svg className="bi" width="24" height="24">
+                <svg className="bi" width="24" height="24" fill={props.myTheme.svg_style}>
                   <use xlinkHref="#twitter" />
                 </svg>
               </a>
             </li>
             <li className="ms-3">
               <a className="text-body-secondary" href="https://www.instagram.com/maiti_animesh/" target="_blank" rel="noopener noreferrer">
-                <svg className="bi" width="24" height="24">
+                <svg className="bi" width="24" height="24" fill={props.myTheme.svg_style}>
                   <use xlinkHref="#instagram" />
                 </svg>
               </a>
             </li>
             <li className="ms-3">
               <a className="text-body-secondary" href="https://www.facebook.com/animesh.maiti.566" target="_blank" rel="noopener noreferrer">
-                <svg className="bi" width="24" height="24">
+                <svg className="bi" width="24" height="24" fill={props.myTheme.svg_style}>
                   <use xlinkHref="#facebook" />
                 </svg>
               </a>

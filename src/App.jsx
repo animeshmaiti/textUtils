@@ -15,20 +15,11 @@ function App() {
     btnText: "Dark Mode",
     nav_bg: "navbar navbar-expand-lg bg-dark",
     nav_style: "dark",
+    svg_style:"rgba(222, 226, 230, 0.75)"
   });
   useEffect(() => {
     document.body.style.backgroundColor = myStyle.color === 'white' ? '#212529' : 'white';
     document.body.style.color = myStyle.color === 'white' ? 'white' : '#212529';
-    const setDefaultSvgColor = () => {
-      const svgElements = document.querySelectorAll('svg'); // Select all SVG elements
-      const defaultColor = 'rgba(222, 226, 230, 0.75)'; // Set your default color
-      svgElements.forEach((svg) => {
-        if (myStyle.color==="white") {
-          svg.style.fill = defaultColor; // Set the default fill color only if it's not already set
-        }
-      });
-    };
-    setDefaultSvgColor();
   }, [myStyle.color]);
 
   const [alert, setAlert] = useState(null);
@@ -51,11 +42,9 @@ function App() {
         btnText: "Light Mode",
         nav_bg: "navbar navbar-expand-lg",
         nav_style: "light",
+        svg_style:"rgba(67, 68, 68, 0.75)"
       });
       showAlert("success", "Light mode is enabled");
-      svgElements.forEach((svg) => {
-        svg.style.fill = '#212529'; // Change the fill color
-      });
     } else {
       setMyStyle({
         color: "white",
@@ -63,11 +52,9 @@ function App() {
         btnText: "Dark Mode",
         nav_bg: "navbar navbar-expand-lg bg-dark",
         nav_style: "dark",
+        svg_style:"rgba(222, 226, 230, 0.75)"
       });
       showAlert("success", "Dark mode is enabled");
-      svgElements.forEach((svg) => {
-        svg.style.fill = 'rgba(222, 226, 230, 0.75)'; // Change the fill color
-      });
     }
   };
 
