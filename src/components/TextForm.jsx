@@ -42,6 +42,7 @@ export default function TextForm(props) {
     setText({ ...text, inText: "", outText: "" });
     console.log("text cleared");
   };
+
   const handleExtractEmail = () => {
     const reg = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/g;
     const matches = text.inText.match(reg);
@@ -53,13 +54,17 @@ export default function TextForm(props) {
       setText({ ...text, outText: "Email not found" });
     }
   };
+
   const handleCopyText=()=>{
     navigator.clipboard.writeText(text.outText);
+    console.log("text copied");
   }
+
   const handleExtraSpace=()=>{
     let newText=text.inText.split(/[ ]+/);
     setText({...text,inText:newText.join(" "),outText:newText.join(" ")});
   }
+
   return (
     <>
       <div style={props.myTheme}>
